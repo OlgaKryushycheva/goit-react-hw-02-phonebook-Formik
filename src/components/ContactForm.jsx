@@ -10,16 +10,15 @@ import {
   Btn,
 } from '../Styles/StyleForm.styled';
 
+const phoneRegExp = /[+3][0-9]{12}$/;
+
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
     .min(5, 'Слишком короткое!')
     .max(20, 'Слишком длинное!')
     .required('Заполните это поле'),
   number: Yup.string()
-    // ???  питання: якщо ставити Yup.number() і далі мін-макс по тексту,
-    // воно пропускає тільки 2 цифри (1-мало, 3-багато)
-    .min(5, 'Слишком короткое!')
-    .max(20, 'Слишком длинное!')
+    .matches(phoneRegExp, 'Неправильный номер телефона!')
     .required('Заполните это поле'),
 });
 

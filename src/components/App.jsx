@@ -19,7 +19,9 @@ export class App extends Component {
   addContact = newContact => {
     const { contacts } = this.state;
 
-    if (contacts.map(contact => contact.name).includes(newContact.name)) {
+    const isExists = contacts.find(contact => contact.name === newContact.name);
+
+    if (isExists) {
       alert(`${newContact.name} ia already in contacts`);
     } else {
       this.setState(({ contacts }) => ({
@@ -35,7 +37,6 @@ export class App extends Component {
   };
 
   changeFilter = evt => {
-    console.log(evt.currentTarget.value);
     this.setState({
       filter: evt.currentTarget.value,
     });
@@ -47,6 +48,13 @@ export class App extends Component {
       contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
     );
   };
+
+  // findContact = () => {
+  //   const { filter, contacts } = this.state;
+  //   return contacts.find(
+  //     contact => contact.name.toLocaleLowerCase() === filter
+  //   );
+  // };
 
   render() {
     const filteredContact = this.filterContact();
