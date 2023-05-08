@@ -19,9 +19,9 @@ export class App extends Component {
   addContact = newContact => {
     const { contacts } = this.state;
 
-    const isExists = contacts.find(contact => contact.name === newContact.name);
+    const isExist = contacts.find(contact => contact.name === newContact.name);
 
-    if (isExists) {
+    if (isExist) {
       alert(`${newContact.name} ia already in contacts`);
     } else {
       this.setState(({ contacts }) => ({
@@ -48,13 +48,6 @@ export class App extends Component {
       contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
     );
   };
-
-  // findContact = () => {
-  //   const { filter, contacts } = this.state;
-  //   return contacts.find(
-  //     contact => contact.name.toLocaleLowerCase() === filter
-  //   );
-  // };
 
   render() {
     const filteredContact = this.filterContact();
