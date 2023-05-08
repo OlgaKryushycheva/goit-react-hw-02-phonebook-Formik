@@ -18,7 +18,7 @@ const ContactSchema = Yup.object().shape({
     .max(20, 'Слишком длинное!')
     .required('Заполните это поле'),
   number: Yup.string()
-    .matches(phoneRegExp, 'Неправильный номер телефона!')
+    .matches(phoneRegExp, 'Заполните поле в формате +380000000000')
     .required('Заполните это поле'),
 });
 
